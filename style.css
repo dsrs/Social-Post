@@ -723,4 +723,7 @@ button.glide__arrow.glide__arrow--right {
         width: 80%;
         height: auto;
     }
+    .title-banner {
+        font-size: .5em;
+    }
 }
