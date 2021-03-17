@@ -376,3 +376,44 @@ save('photos')
 save('todos')
 
 */
+
+
+/*
+.open ETLProject.db
+
+DROP TABLE IF EXISTS comments;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS posts;
+
+CREATE TABLE users (
+    userId int not null PRIMARY KEY, 
+    _name varchar not null,
+    username  varchar(255) not null,
+    email varchar(255) not null, 
+    adress varchar(500) not null,
+    phone varchar(500) not null,
+    website varchar(500) not null,
+    company varchar(500) not null);
+
+CREATE TABLE posts (
+    userId int not null, 
+    postId int not null PRIMARY KEY,
+    title  varchar(255) not null,
+    body varchar(255) not null,
+    FOREIGN KEY(userId) REFERENCES users(userId)
+    );
+
+CREATE TABLE comments (
+    postId int not null, 
+    id int not null,
+    username  varchar(255) not null,
+    email varchar(255) not null, 
+    body varchar(500) not null,
+    FOREIGN KEY(postId) REFERENCES posts(postId)
+    );
+
+.mode csv
+.import /Users/mauriciorodriguez/Project/ddddd/comments.csv comments
+.import /Users/mauriciorodriguez/Project/ddddd/users.csv users
+.import /Users/mauriciorodriguez/Project/ddddd/posts.csv posts
+*/
