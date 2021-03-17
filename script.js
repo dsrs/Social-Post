@@ -285,3 +285,94 @@ async function removeComents() {
 function userNotFound() {
     alert("User not found in our database 😭");
 }
+
+
+
+/* const fs = require('fs');
+
+const axios = require('axios');
+//QUE CESAAAAAAAAAAAAA NO LO EXPLIQUEEEEEE
+function convertToCSV(objArray) {
+    const array = typeof objArray != "object" ? JSON.parse(objArray) : objArray;
+    let str = "";
+    for (let i = 0; i < array.length; i++) {
+        let line = "";
+        for (let index in array[i]) {
+            if (line != "") line += ",";
+            string = array[i][index];
+            if (string.length > 1) string = string.replace(/\n/g, ' ');
+            line += string;
+        }
+        str += line + "\r\n";
+    }
+    return str;
+}
+//QUE CESAAAAAAAAAAAAA NO LO EXPLIQUEEEEEE
+
+//Funcion para traer la info de address de la appi users
+
+function convertToCSVAddressUsers(objArray) {
+    const array = typeof objArray != "object" ? JSON.parse(objArray) : objArray;
+    let str = "";
+    for (let i = 0; i < array.length; i++) {
+        let line = "";
+        addressObj = array[i].address;
+        line = array[i].id;
+        for (let index in addressObj) {
+            if (line != "") line += ",";
+            string = addressObj[index];
+            if (typeof string == "object") string = JSON.stringify(string);
+            line += string;
+        }
+        str += line + "\r\n";
+    }
+    return str;
+
+}
+
+async function saveAddressUsers(kind) {
+    let inforJason = await search(kind);
+    let csv = await convertToCSVAddressUsers(inforJason);
+
+    fs.writeFile(`${kind}\'s addressETL/${kind}\'s address.csv`, csv, 'utf8', function(err) {
+        if (err) {
+            console.log(err, 'Some error occured - file either not saved or corrupted file saved.');
+        } else {
+            console.log('users\'s Address  are saved!');
+        }
+    });
+
+}
+
+//Funcion para buscar la infor segun la tabla
+async function search(kind) {
+
+    let url = `https://jsonplaceholder.typicode.com/${kind}`;
+    const res = await axios.get(url);
+    const comentsJSON = JSON.parse(JSON.stringify(res.data)); //QUE CESAAAAAAAAAAAAA NO LO EXPLIQUEEEEEE
+    return comentsJSON;
+}
+
+async function save(kind) {
+    let inforJason = await search(kind);
+    let csv = await convertToCSV(inforJason);
+
+    fs.writeFile(`${kind}ETL/${kind}.csv`, csv, 'utf8', function(err) {
+        if (err) {
+            console.log(err, 'Some error occured - file either not saved or corrupted file saved.');
+        } else {
+            console.log('It\'s saved!');
+        }
+    });
+
+}
+
+save('users')
+saveAddressUsers('users')
+save('posts')
+save('comments')
+save('albums')
+save('photos')
+save('todos')
+
+*/
